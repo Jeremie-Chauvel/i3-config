@@ -36,7 +36,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+a kill
 
 # start dmenu (a program launcher)
-bindsym $mod+q exec dmenu_run
+bindsym $mod+q exec ulauncher
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -153,6 +153,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# lock
+bindsym $mod+p exec i3lock
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -160,9 +163,10 @@ bar {
         mode hide  
         modifier $mod
 }
+# Review the lines below and append to ~/.config/i3/config
+
 
 ## Volume control
-# needs: https://github.com/hastinbe/i3-volume
 
 # Path to volume control, without trailing slash
 set $volumepath ~/.i3/i3-volume/volume
