@@ -160,26 +160,16 @@ bindsym $mod+p exec xautolock -locknow
 # screenshot
 bindsym Print exec gnome-screenshot -i
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command i3status
-        mode hide  
-        modifier $mod
-}
-# Review the lines below and append to ~/.config/i3/config
-
 # Station
 exec_always $HOME/.config/i3/station.sh
+
+# polybar
+exec_always --no-startup-id $HOME/.config/i3/polybar.sh
 
 ## Volume control
 
 # Path to volume control, without trailing slash
 set $volumepath ~/.i3/i3-volume/volume
-
-# Command for the status line
-#   ie: i3blocks, i3status
-set $statuscmd i3status
 
 # Signal used to update the status line
 #   i3blocks uses SIGRTMIN+10 by default
