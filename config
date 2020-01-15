@@ -169,6 +169,8 @@ bar {
 }
 # Review the lines below and append to ~/.config/i3/config
 
+# Station
+exec_always $HOME/.config/i3/station.sh
 
 ## Volume control
 
