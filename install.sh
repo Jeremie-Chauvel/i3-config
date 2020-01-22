@@ -2,7 +2,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-sudo apt install i3 i3-ipc i3status i3lock dmenu xautolock
+sudo apt install -y i3 i3-ipc i3status i3lock dmenu xautolock kitty
 git clone https://github.com/hastinbe/i3-volume.git ~/.i3/i3-volume
 mkdir -p ~/.config/i3
 for file in ./*
