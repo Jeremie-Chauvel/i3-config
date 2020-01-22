@@ -155,7 +155,7 @@ bindsym $mod+r mode "resize"
 
 # lock
 # use xautolock # sudo apt install xautolock
-exec_always --no-startup-id xautolock -time 5  -locker "i3lock"
+exec_always --no-startup-id ~/.config/i3/lock.sh
 bindsym $mod+p exec xautolock -locknow
 # screenshot
 bindsym Print exec gnome-screenshot -i
