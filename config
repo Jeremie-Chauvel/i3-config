@@ -197,3 +197,14 @@ set $volumestep 5
 bindsym XF86AudioRaiseVolume exec $volumepath -np -i $volumestep -t $statuscmd -u $statussig
 bindsym XF86AudioLowerVolume exec $volumepath -np -d $volumestep -t $statuscmd -u $statussig
 bindsym XF86AudioMute        exec $volumepath -mn -t $statuscmd -u $statussig
+
+# Workspace assignment
+set $first_screen eDP-1-1
+set $second_screen HDMI-1-2
+
+workspace 1 output $first_screen
+workspace 2 output $second_screen
+workspace 3 output $first_screen
+# Application assignment
+#
+assign [class="^Code$"] → number 2
