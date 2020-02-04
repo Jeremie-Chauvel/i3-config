@@ -208,3 +208,9 @@ workspace 3 output $first_screen
 # Application assignment
 #
 assign [class="^Code$"] → number 2
+assign [class="^Station$"] → number 3
+
+# keyboard layouts, french qwerty and azerty, switch with win+space
+exec_always "setxkbmap -layout us,fr -variant qwerty-fr,azerty"
+exec_always "setxkbmap -option 'grp:win_space_toggle'"
+
