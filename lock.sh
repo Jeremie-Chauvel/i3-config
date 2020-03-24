@@ -5,4 +5,4 @@ if pgrep 'xautolock'; then
   killall xautolock
 fi
 
-xautolock -time 5  -locker "i3lock --ignore-empty-password --image=$HOME/Pictures/wallpaper.png --tiling"
+xautolock -time 5  -locker "$HOME/.i3/i3lock-fancy-multimonitor/lock --pixelate --no-text"

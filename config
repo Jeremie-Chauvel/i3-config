@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt_mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -35,8 +36,9 @@ bindsym $mod+Return exec kitty
 # kill focused window
 bindsym $mod+Shift+a kill
 
-# start dmenu (a program launcher)
-bindsym $mod+q exec --no-startup-id ulauncher
+# start ulauncher (a program launcher)
+#exec_always --no-startup-id ulauncher
+bindsym $mod + q  exec --no-startup-id dmenu_run -fn 'Hack NF Regular-16' -nb '#1E2320' -nf '#DBDBDB' -sb '#095E09' -sf '#ffffff'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -96,36 +98,37 @@ bindsym $mod+Shift+q focus parent
 # focus the child container
 bindsym $mod+d focus child
 
+
 # switch to workspace
-bindsym $mod+ampersand workspace 1
-bindsym $mod+eacute workspace 2
-bindsym $mod+quotedbl workspace 3
-bindsym $mod+apostrophe workspace 4
-bindsym $mod+parenleft workspace 5
-bindsym $mod+minus workspace 6
-bindsym $mod+egrave workspace 7
-bindsym $mod+underscore workspace 8
-bindsym $mod+ccedilla workspace 9
-bindsym $mod+agrave workspace 10
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+eacute move container to workspace 2
+bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+egrave move container to workspace 7
+bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+ccedilla move container to workspace 9
-bindsym $mod+Shift+agrave move container to workspace 10
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+Esc exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -198,6 +201,9 @@ bindsym XF86AudioRaiseVolume exec $volumepath -np -i $volumestep -t $statuscmd -
 bindsym XF86AudioLowerVolume exec $volumepath -np -d $volumestep -t $statuscmd -u $statussig
 bindsym XF86AudioMute        exec $volumepath -mn -t $statuscmd -u $statussig
 
+# use https://github.com/clementhannicq/dmenu-xrandr for screen gestion
+bindsym $mod+u exec ~/.local/bin/dmenu-xrandr
+
 # Workspace assignment
 set $first_screen eDP-1-1
 set $second_screen HDMI-1-2
@@ -211,6 +217,38 @@ assign [class="^Code$"] → number 2
 assign [class="^Station$"] → number 3
 
 # keyboard layouts, french qwerty and azerty, switch with win+space
-exec_always "setxkbmap -layout us,fr -variant qwerty-fr,azerty"
-exec_always "setxkbmap -option 'grp:win_space_toggle'"
+exec_always --no-startup-id "setxkbmap -layout us,fr -variant qwerty-fr,azerty"
+
+mode "alternate-layout" {
+  # switch to workspace
+  bindsym $mod+ampersand workspace 1
+  bindsym $mod+eacute workspace 2
+  bindsym $mod+quotedbl workspace 3
+  bindsym $mod+apostrophe workspace 4
+  bindsym $mod+parenleft workspace 5
+  bindsym $mod+minus workspace 6
+  bindsym $mod+egrave workspace 7
+  bindsym $mod+underscore workspace 8
+  bindsym $mod+ccedilla workspace 9
+  bindsym $mod+agrave workspace 10
+
+  # move focused container to workspace
+  bindsym $mod+Shift+1 move container to workspace 1
+  bindsym $mod+Shift+eacute move container to workspace 2
+  bindsym $mod+Shift+3 move container to workspace 3
+  bindsym $mod+Shift+4 move container to workspace 4
+  bindsym $mod+Shift+5 move container to workspace 5
+  bindsym $mod+Shift+6 move container to workspace 6
+  bindsym $mod+Shift+egrave move container to workspace 7
+  bindsym $mod+Shift+8 move container to workspace 8
+  bindsym $mod+Shift+ccedilla move container to workspace 9
+  bindsym $mod+Shift+agrave move container to workspace 10
+
+  bindsym $alt_mod+space exec "setxkbmap -layout us -variant qwerty-fr"; mode "default"
+}
+
+bindsym $alt_mod+space mode "alternate-layout";exec "setxkbmap -layout fr -variant azerty"
+
+# wifi
+exec_always --no-startup-id "nm-applet"
 
