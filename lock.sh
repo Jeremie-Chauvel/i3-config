@@ -5,4 +5,4 @@ if pgrep 'xautolock'; then
   killall xautolock
 fi
 
-xautolock -time 5  -locker "$HOME/.i3/i3lock-fancy-multimonitor/lock --pixelate --no-text"
+xautolock -time 5 -locker "$HOME/.i3/i3lock-fancy/lock --pixelate --no-text"
