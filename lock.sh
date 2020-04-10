@@ -1,7 +1,13 @@
 #! /bin/bash
 # lock the screen using i3lock and xautolock
 
-if pgrep 'xautolock'; then
+set -uo pipefail
+IFS=$'\n\t'
+
+pgrep 'xautolock' >/dev/null
+result_status="$?"
+set -e
+if [[ "$result_status" -gt 0 ]]; then
   killall xautolock
 fi
 
