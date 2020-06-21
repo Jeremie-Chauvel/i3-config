@@ -7,7 +7,7 @@ IFS=$'\n\t'
 pgrep 'xautolock' >/dev/null
 result_status="$?"
 set -e
-if [[ "$result_status" -gt 0 ]]; then
+if [[ "$result_status" -eq 0 ]]; then
   killall xautolock
 fi
 

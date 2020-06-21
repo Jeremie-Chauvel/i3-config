@@ -31,7 +31,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+a kill
@@ -156,29 +156,33 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# clipboard
+exec_always --no-startup-id xfce4-clipman
 # lock
 # use xautolock # sudo apt install xautolock
 exec_always --no-startup-id ~/.config/i3/lock.sh
 bindsym $mod+p exec xautolock -locknow
 # screenshot
-bindsym Print exec gnome-screenshot -i
+bindsym Print exec xfce4-screenshooter
+bindsym Shift+Print exec xfce4-screenshooter -f -o gimp
+bindsym Ctrl+Print exec ~/.config/i3/screencast.sh
+bindsym Ctrl+Shift+Print exec killall ffmpeg
 
 # brightness
 bindsym XF86MonBrightnessUp exec brightness+
 bindsym XF86MonBrightnessDown exec brightness-
 
 # Station
-exec_always $HOME/.config/i3/station.sh
+exec_always --no-startup-id $HOME/.config/i3/station.sh
 
-# Clementine
-exec_always $HOME/.config/i3/clementine.sh
+# Clementine & Slack
+exec_always --no-startup-id $HOME/.config/i3/autolaunch.sh clementine slack
 
 # polybar
 exec_always --no-startup-id $HOME/.config/i3/polybar.sh
 
 # wallpaper
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.png
-
+exec_always --no-startup-id feh --randomize --bg-max $HOME/Pictures/wallpapers/*
 ## Volume control
 
 # Path to volume control, without trailing slash
@@ -208,17 +212,17 @@ bindsym XF86AudioMute        exec $volumepath -mn -t $statuscmd -u $statussig
 bindsym $mod+u exec ~/.local/bin/dmenu-xrandr
 
 # Workspace assignment
-set $first_screen eDP-1-1
-set $second_screen HDMI-1-2
+set $first_screen eDP-1
+set $second_screen HDMI-2
 
 workspace 1 output $first_screen
 workspace 2 output $second_screen
 workspace 3 output $first_screen
 # Application assignment
 #
-assign [class="^Code$"] → number 2
-assign [class="^Station$"] → number 3
-assign [class="^Clementine$"] → number 1
+#assign [class="^Code$"] → number 2
+#assign [class="^Station$"] → number 3
+#assign [class="^Clementine$"] → number 1
 
 # keyboard layouts, french qwerty and azerty, switch with win+space
 exec_always --no-startup-id "setxkbmap -layout us,fr -variant qwerty-fr,azerty"
