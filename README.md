@@ -1,7 +1,9 @@
 # I3 config
 
-containt i3 config file
+usage:
 
-## Requirements
+clone in current directory and install
 
-- https://github.com/hastinbe/i3-volume
+```bash
+bash -c "$(curl -sSL https://raw.githubusercontent.com/Jeremie-Chauvel/i3-config/master/install.sh)"
+```
