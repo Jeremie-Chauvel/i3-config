@@ -3,7 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 readonly i3_config_dir="$HOME/.config/i3"
-sudo apt install -y i3 i3status i3lock dmenu xautolock feh
+sudo apt install -y i3 i3status i3lock dmenu xautolock feh slop gifsicle
 
 git clone https://github.com/Jeremie-Chauvel/i3-config.git ./
 cd i3-config
