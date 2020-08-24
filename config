@@ -183,6 +183,7 @@ exec_always --no-startup-id $HOME/.config/i3/polybar.sh
 
 # wallpaper
 exec_always --no-startup-id feh --randomize --bg-max $HOME/Pictures/wallpapers/*
+bindsym $mod+Shift+w exec --no-startup-id feh --randomize --bg-max $HOME/Pictures/wallpapers/*
 ## Volume control
 
 # Path to volume control, without trailing slash
