@@ -181,6 +181,9 @@ exec_always --no-startup-id $HOME/.config/i3/autolaunch.sh clementine slack
 # polybar
 exec_always --no-startup-id $HOME/.config/i3/polybar.sh
 
+# trackpad toggle]
+bindsym $mod+$alt_mod+space exec --no-startup-id $HOME/.config/i3/toggleTrackPad.sh
+
 # wallpaper
 exec_always --no-startup-id feh --randomize --bg-max $HOME/Pictures/wallpapers/*
 bindsym $mod+Shift+w exec --no-startup-id feh --randomize --bg-max $HOME/Pictures/wallpapers/*
