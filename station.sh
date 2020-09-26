@@ -3,13 +3,13 @@
 set -uo pipefail
 IFS=$'\n\t'
 
-readonly station_path=$(find "$HOME/.local/" -name 'Station*')
+readonly station_browser='chromium-browser'
 
-pgrep 'Station' >/dev/null
+pgrep 'chromium' >/dev/null
 result_status="$?"
 set -e
 if [[ "$result_status" -gt 0 ]]; then
-  if [[ -f "$station_path" ]]; then
-    "$station_path" &>/dev/null &
+  if hash "$station_browser"; then
+    "$station_browser" &>/dev/null &
   fi
 fi
