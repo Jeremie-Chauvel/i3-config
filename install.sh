@@ -26,20 +26,3 @@ if [[ ! -d "$HOME/.i3/i3-volume" ]]; then
 fi
 # install i3lock-fancy
 bash -c "$(curl -sSL https://raw.githubusercontent.com/Jeremie-Chauvel/i3lock-fancy/master/install.sh)"
-
-if [[ ! -d "$i3_config_dir" ]]; then
-  mkdir -p "$i3_config_dir"
-fi
-
-create_symbolic_link_with_backup() {
-  local readonly file=${1:-config}
-  if [[ -f "$i3_config_dir/$file" ]]; then
-    mv "$i3_config_dir/$file" "$i3_config_dir/${file}.backup"
-  fi
-  ln -sr "$file" "$i3_config_dir/$file"
-}
-
-for file in ./*.sh; do
-  create_symbolic_link_with_backup "$file"
-done
-create_symbolic_link_with_backup 'config'
